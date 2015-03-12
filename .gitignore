@@ -1,0 +1,9 @@
+.idea/
+node_modules/
+public/js/libs/angular
+public/js/libs/angular-animate
+public/js/libs/angular-aria
+public/js/libs/angular-google-maps
+public/js/libs/angular-material
+public/js/libs/angular-route
+public/js/libs/lodash

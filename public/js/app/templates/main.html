@@ -1,0 +1,59 @@
+<!--
+
+https://material.angularjs.org/#/
+
+flex-sm	Sets flex on devices less than 600px wide.
+flex-gt-sm	Sets flex on devices greater than 600px wide.
+flex-md	Sets flex on devices between 600px and 960px wide..
+flex-gt-md	Sets flex on devices greater than 960px wide.
+flex-lg	Sets flex on devices between 960px and 1200px.
+flex-gt-lg	Sets flex on devices greater than 1200px wide.
+-->
+
+<div layout="row">
+    <div flex="70" flex-md="65" flex-sm="0">
+        <ui-gmap-google-map center='map.center' zoom='map.zoom' options="map.options" xmlns="http://www.w3.org/1999/html">
+            <ui-gmap-markers models="tweetMarks" coords="'self'" icon="'icon'" options="iconOptions" click="'clickHandler'">
+            </ui-gmap-markers>
+        </ui-gmap-google-map>
+    </div>
+    <div flex="30" flex-md="35" flex-sm="100">
+        <div>
+            <md-toolbar class="md-theme-light">
+                <h1 class="md-toolbar-tools">
+                    <span>{{count}} Tweets From Minnesota</span>
+                </h1>
+                <a href='/auth/twitter'> login twitter. </a>
+            </md-toolbar>
+
+            <md-content>
+                <md-list>
+                    <md-item ng-repeat="twit in tweets" class="md-padding">
+                        <md-item-content class="sidebar-tweet-summary">
+                            <div class="md-tile-left">
+                                <a target="_blank" href="{{twit.userProfile.url}}">
+                                    <img height="45px" width="45px" src="{{twit.userProfile.picture}}">
+                                </a>
+                            </div>
+                            <div class="md-tile-content">
+                                <h3>{{twit.tweetText}}</h3>
+                            </div>
+                        </md-item-content>
+                        <md-divider ng-if="!$last"></md-divider>
+                    </md-item>
+                </md-list>
+            </md-content>
+        </div>
+    </div>
+</div>
+
+
+
+<!--
+<md-content class="md-padding" style="height: 300px; width: 300px; padding: 24px;">
+    <div ng-repeat="trend in trends">
+        <a target="_blank" href="{{trend.url}}">
+            <h3>{{trend.name}}</h3>
+        </a>
+    </div>
+</md-content>-->
