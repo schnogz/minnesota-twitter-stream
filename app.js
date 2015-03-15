@@ -3,7 +3,7 @@ var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 var OAuth = require('oauth').OAuth;
-var twitterConfig =  require('./config/twitter');
+
 var app = express();
 
 // all environments
@@ -37,8 +37,8 @@ http.createServer(app).listen(app.get('port'), function() {
 var oa = new OAuth(
 	"https://api.twitter.com/oauth/request_token",
 	"https://api.twitter.com/oauth/access_token",
-    twitterConfig.consumer_key,
-    twitterConfig.consumer_secret,
+	"A6x1nzmmmerCCmVN8zTgew",
+	"oOMuBkeqXLqoJkSklhpTrsvuZXo9VowyABS8EkAUw",
 	"1.0",
 	"http://localhost:3000/auth/twitter/callback",
 	"HMAC-SHA1"
@@ -83,7 +83,6 @@ app.get('/auth/twitter/callback', function(req, res, next) {
 				}
 			}
 		);
-	} else {
-        next(new Error("Wow you really messed something up. How did you even get here!?"));
-    }
+	} else
+		next(new Error("Wow you really messed something up. How did you even get here!?"))
 });
