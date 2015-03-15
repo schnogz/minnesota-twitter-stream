@@ -1,4 +1,6 @@
 var twitter = require('ntwitter');
+var twitterConfig = require('./../config/twitter');
+
 var io = require('socket.io').listen(3001, {log: false});
 
 exports.index = function (req, res) {
@@ -11,8 +13,8 @@ exports.index = function (req, res) {
 var isActive = false;
 var InitStream = function (session) {
     var twitConnection = new twitter({
-        consumer_key: "A6x1nzmmmerCCmVN8zTgew",
-        consumer_secret: "oOMuBkeqXLqoJkSklhpTrsvuZXo9VowyABS8EkAUw",
+        consumer_key: twitterConfig.consumer_key,
+        consumer_secret: twitterConfig.consumer_secret,
         access_token_key: session.oauth.access_token,
         access_token_secret: session.oauth.access_token_secret
     });

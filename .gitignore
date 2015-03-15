@@ -1,4 +1,5 @@
 .idea/
+config/twitter.js
 node_modules/
 public/js/libs/angular
 public/js/libs/angular-animate
