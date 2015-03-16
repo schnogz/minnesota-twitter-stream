@@ -1,11 +1,12 @@
 angular.module('mnTweets').controller('tweetDetailsCtrl', [
 	'$scope',
-	'$mdSidenav',
 	'$mdBottomSheet',
 function(
 	$scope,
-	$mdSidenav,
 	$mdBottomSheet
 ){
-	//TODO: make controller
+	$scope.title = "this might work";
+	$scope.performAction = function (action) {
+		$mdBottomSheet.hide(action);
+	}
 }]);

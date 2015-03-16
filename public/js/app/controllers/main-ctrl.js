@@ -20,12 +20,6 @@ function(
 		$mdSidenav('left').toggle();
 	};
 
-	function tweetDetailsCtrl($mdBottomSheet) {
-		this.performAction = function (action) {
-			$mdBottomSheet.hide(action);
-		};
-	}
-
 	// map configuration
 	// TODO: move into service or json file
 	$scope.map = {
@@ -51,14 +45,14 @@ function(
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.title = text;
-		this.showTweetDetails = function(e) {
+		this.showTweetDetails = function(eventData) {
 			$mdBottomSheet.show({
 				parent: angular.element(document.getElementById('content')),
-				templateUrl: 'js/app/templates/bottomSheet.html',
-				controller: [ '$mdBottomSheet', tweetDetailsCtrl],
-				controllerAs: "vm",
-				bindToController: true,
-				targetEvent: ""
+				templateUrl: 'js/app/templates/tweet-details.html',
+				controller: 'tweetDetailsCtrl'
+				//scope: eventData.model,
+				//bindToController: true,
+				//targetEvent: eventData
 			}).then(function (clickedItem) {
 				clickedItem && console.log(clickedItem.name + ' clicked!');
 			});
