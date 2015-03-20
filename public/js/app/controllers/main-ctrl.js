@@ -9,8 +9,18 @@ function(
 	$mdBottomSheet
 ){
 
+	angular.element(document).on('visibilitychange', function(e) {
+		// if page is now active, reset missed tweets count and update page title
+		if (!window.document.hidden) {
+			// update page title
+			window.document.title = 'Minnesota Tweet Map';
+			$scope.tweetsMissed = 0;
+		}
+	});
+
 	$scope.title ="Tweets From Minnesota";
 	$scope.count = 0;
+	$scope.tweetsMissed = 0;
 	$scope.tweets = [];
 	$scope.tweetMarks = [];
 	$scope.trends = null;
@@ -103,6 +113,11 @@ function(
 			var sidebar = document.getElementById('sidebar-tweet-list');
 			sidebar.scrollTop = sidebar.scrollHeight;
 
+			// update page title if user is currently viewing page
+			if (window.document.hidden) {
+				$scope.tweetsMissed++;
+				window.document.title = '(' + $scope.tweetsMissed + ')' + ' Minnesota Tweet Map';
+			}
 		} else {
 			//TODO: investigate how to plot tweet
 			console.log(tweet);
