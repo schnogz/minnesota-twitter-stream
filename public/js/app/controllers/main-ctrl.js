@@ -83,11 +83,12 @@ function(
 	var socket = io.connect('http://localhost:3001');
 	window.socket = socket;
 
-	socket.on("newTrendData", function (data) {
+	//TODO: ajax into new endpoint after successful twitter login
+	/* socket.on("newTrendData", function (data) {
 		console.log(data);
 		$scope.trends = data[0].trends;
 		$scope.$apply();
-	});
+	});	*/
 
 	socket.on('newTweet', function (tweet) {
 		// some tweets don't seem to have geo coordinates... wtf?

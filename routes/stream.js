@@ -1,15 +1,17 @@
 var twitter = require('ntwitter');
 var twitterConfig = require('./../config/twitter');
-
 var io = require('socket.io').listen(3001, {log: false});
 
-exports.index = function (req, res) {
-    res.route;
-    res.render('index', { title: 'MN Tweet Map' });
-    if (req.session.oauth) {
-        InitStream(req.session);
+exports.stream = function (request, response) {
+	response.route;
+	response.render('index', {
+	    title: 'MN Tweet Map'
+    });
+    if (request.session.oauth) {
+        InitStream(request.session);
     }
 };
+
 var isActive = false;
 var InitStream = function (session) {
     var twitConnection = new twitter({
@@ -18,15 +20,6 @@ var InitStream = function (session) {
         access_token_key: session.oauth.access_token,
         access_token_secret: session.oauth.access_token_secret
     });
-
-    // get MPLS's current trends since Twitter wont honor MN's WOEID
-    //TODO: figure out how to do this without a timeout. clientside doesnt seem to be subscribed to socket in time.
-    //TODO: is there a way to see if client is listening or received event via socket.io?
-    setTimeout(function() {
-        twitConnection.get('/trends/place.json', { id: 2452078 }, function (x, data) {
-            io.sockets.emit("newTrendData", data);
-        });
-    }, 500);
 
     if (!isActive) {
         console.log('Twitter stream initiated');
