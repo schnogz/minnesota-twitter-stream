@@ -1,4 +1,4 @@
-exports.error = function (request, response) {
+exports.notFoundError = function (request, response) {
 	response.route;
 	response.render('404', {
 		title: '404 - Page Not Found',
