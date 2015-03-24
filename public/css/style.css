@@ -1,3 +1,35 @@
+#login-page {
+    height:100%;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)),
+        url(../images/login-bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#login-page h1 {
+    margin-top:0;
+}
+
+#login-page h3 {
+    text-align: center;
+    margin-top:-10px;
+}
+
+#login-box {
+    background-color: #E1E1E1;
+    max-width: 300px;
+    border: 0 solid;
+    border-radius: 5px;
+}
+
+#login-box-button {
+    background-color: rgb(64,153,255);
+}
+
 .angular-google-map-container {
     height: 100%;
     width: 100%;

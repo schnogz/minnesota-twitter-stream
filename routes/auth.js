@@ -45,8 +45,8 @@ exports.authCallback = function (request, response, next) {
 					request.session.oauth.access_token = oauth_access_token;
 					request.session.oauth.access_token_secret = oauth_access_token_secret;
 
-					// redirect back to application home page
-					response.redirect('/');
+					// redirect to twitter stream page
+					response.redirect('/#/stream');
 				}
 			}
 		);

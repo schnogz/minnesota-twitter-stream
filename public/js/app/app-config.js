@@ -3,7 +3,9 @@ var app = angular.module('mnTweets', ['uiGmapgoogle-maps', 'ngRoute', 'ngMateria
 app.config(["$routeProvider", "$mdThemingProvider", "$mdIconProvider", function ($routeProvider, $mdThemingProvider, $mdIconProvider) {
 	// route configurations
 	$routeProvider.when("/", {
-		templateUrl: "js/app/templates/app-main.html",
+		templateUrl: "js/app/templates/app-login.html"
+	}).when("/stream", {
+		templateUrl: "js/app/templates/app-stream.html",
 		controller: "mainCtrl"
 	}).otherwise({
 		redirectTo: "/"
