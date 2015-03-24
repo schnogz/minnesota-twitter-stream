@@ -35,7 +35,7 @@ function(
 	$scope.map = {
 		center: {
 			latitude: 46.50,
-			longitude: -93.30
+			longitude: -94.30
 		},
 		zoom: 7,
 		options: {
@@ -70,11 +70,14 @@ function(
 		this.icon = "/images/icon.png";
 	}
 
-	function Tweet(id, latitude, longitude, text, user_picture, user_screenName) {
+	function Tweet(id, latitude, longitude, text, user_picture, user_name, user_screenName) {
 		this.markInfo =  new TweetMarker(id, latitude, longitude, text, user_picture);
 		this.tweetText = text;
+		this.tweetUrl = "http://www.twitter.com/";// + user_screenName + "/status/" + id;
 		this.userProfile = {
 			picture: user_picture,
+			name: user_name,
+			screen_name: user_screenName,
 			url: "http://www.twitter.com/" + user_screenName
 		};
 	}
@@ -100,6 +103,7 @@ function(
 				tweet.coordinates.coordinates[0],
 				tweet.text,
 				tweet.user.profile_image_url,
+				tweet.user.name,
 				tweet.user.screen_name
 			);
 
@@ -111,7 +115,7 @@ function(
 			$scope.$apply();
 
 			// auto scroll to latest tweets in sidebar
-			var sidebar = document.getElementById('sidebar-tweet-list');
+			var sidebar = document.getElementById('sidebar');
 			sidebar.scrollTop = sidebar.scrollHeight;
 
 			// update page title if user is currently viewing page

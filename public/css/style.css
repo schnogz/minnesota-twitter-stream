@@ -5,33 +5,54 @@
     position: absolute;
     top: 0;
 }
-/*
-#sidebar-tweet-container {
-    background-color: rgba(30,48,61,0.9);
-    max-height: 100%;
-    height: -moz-calc(100%);
-    height: -webkit-calc(100%);
-    height: calc(100%);
-    overflow-y: auto;
-    padding-top: 90px;
+
+#sidebar {
+    overflow-x: hidden;
 }
-
-#sidebar-overview-container {
-    position: absolute;
-    right: 0px;
-}
-
-*/
-
 .sidebar-tweet-summary {
     padding: 0 10px;
 }
 
+.sidebar-tweet-details {
+    min-width: 360px;
+    overflow-x: hidden;
+    margin-left: 5px;
+}
+
+img.tweet-buttons {
+    opacity: 0.2;
+}
+
+img.tweet-buttons:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
 .sidebar-profile-pic {
-    border: 1px solid #dddddd;
+    border: 1px solid #e1e8ed;
     border-radius: 20%;
 }
 
+.tweet-wrapper:hover {
+    background-color: #e1e8ed;
+}
+
+h3.tweet-name {
+    font-weight: bold;
+    color: #292f33;
+    font-size: 18px;
+}
+
+h3.tweet-screen-name {
+    font-weight: lighter;
+    color: #474D51;
+    font-size: 14px;
+}
+
+p.tweet-text {
+    font-size: 1.05em;
+    line-height: 1.2;
+}
 
 html, body {
     font-family: 'Roboto', sans-serif;
@@ -42,7 +63,6 @@ html, body {
 }
 
 /* Toolbar area */
-
 .menu {
     background-color: transparent;
     border: none;
@@ -56,15 +76,11 @@ md-toolbar h1 {
 }
 
 /* Sidenav area */
-
 md-list .md-button {
     color: inherit;
     font-weight: 500;
     text-align: left;
     width: 100%;
-}
-md-list .md-button.selected {
-    color: #03a9f4;
 }
 
 md-sidenav  md-list {
@@ -73,7 +89,6 @@ md-sidenav  md-list {
 
 
 /* Primary content area */
-
 #content {
     overflow: hidden;
 }
@@ -125,13 +140,11 @@ md-button.menuBtn > md-icon {
 }
 
 /* Utils */
-
 .content-wrapper {
     position: relative;
 }
 
 /* Typography support coming in 0.8.0 */
-
 md-toolbar h1 {
     font-size: 1.250em;
     font-weight: 400;

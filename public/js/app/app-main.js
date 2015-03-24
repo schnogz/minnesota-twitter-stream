@@ -10,7 +10,11 @@ app.config(["$routeProvider", "$mdThemingProvider", "$mdIconProvider", function 
 	});
 
 	// icon configurations
-	$mdIconProvider.icon("menu", "images/menu.svg", 24);
+	$mdIconProvider
+		.icon("menu", "images/menu.svg", 24)
+		.icon("star-full", "images/star.png", 24)
+		.icon("star-empty", "images/star-empty.png", 24)
+		.icon("retweet", "images/retweet.png", 24);
 
 	// theme configurations
 	$mdThemingProvider.theme('default')
