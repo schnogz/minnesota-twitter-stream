@@ -8,7 +8,7 @@
 <div flex layout="row">
     <md-sidenav md-is-locked-open="$mdMedia('gt-md')" class="md-whiteframe-z2" md-component-id="left" id="sidebar">
         <h1 ng-show="!tweets.length">Nobody has tweeted yet!</h1>
-            <md-list>
+            <md-list ng-mouseenter="isTweetHovered = true" ng-mouseleave="isTweetHovered = false">
                 <md-item ng-repeat="twit in tweets" class="md-padding">
                     <md-whiteframe class="md-whiteframe-z1 tweet-wrapper" layout>
                         <md-item-content class="sidebar-tweet-summary">
@@ -31,26 +31,30 @@
                                         {{twit.tweetText}}
                                     </p>
                                 </div>
-                                <div layout="row" layout-align="space-around center" style="margin-top: 5px;">
+                                <div layout="row" layout-align="space-around center">
                                     <div>
-                                        <a>
-                                            <img class="tweet-buttons" height="12px" width="18px" src="/images/reply.png" alt="Reply To Tweet">
-                                        </a>
+                                        <md-button class="tweet-icons" aria-label="Reply">
+                                            <md-icon class="icon-reply" md-svg-src="/images/reply.svg" style="width: 18px; height: 14px;"></md-icon>
+                                            <md-tooltip md-autohide="true">Reply</md-tooltip>
+                                        </md-button>
                                     </div>
                                     <div>
-                                        <a>
-                                            <img class="tweet-buttons" height="12px" width="18px" src="/images/retweet.png" alt="Retweet Tweet">
-                                        </a>
+                                        <md-button class="tweet-icons" aria-label="Retweet">
+                                            <md-icon class="icon-retweet" md-svg-src="/images/retweet.svg" style="width: 20px; height: 22px;"></md-icon>
+                                            <md-tooltip md-autohide="true">Retweet</md-tooltip>
+                                        </md-button>
                                     </div>
                                     <div>
-                                        <a>
-                                            <img class="tweet-buttons" height="15px" width="18px" src="/images/star.png" alt="Favorite Tweet">
-                                        </a>
+                                        <md-button class="tweet-icons" aria-label="Favorite">
+                                            <md-icon class="icon-favorite" md-svg-src="/images/star.svg" style="width: 18px; height: 22px;"></md-icon>
+                                            <md-tooltip md-autohide="true">Favorite</md-tooltip>
+                                        </md-button>
                                     </div>
                                     <div>
-                                        <a>
-                                            <img class="tweet-buttons" height="5px" width="18px" src="/images/details.png" alt="More Details">
-                                        </a>
+                                        <md-button class="tweet-icons" aria-label="Details">
+                                            <md-icon class="icon-details" md-svg-src="/images/details.svg" style="width: 18px; height: 18px;"></md-icon>
+                                            <md-tooltip md-autohide="true">Details</md-tooltip>
+                                        </md-button>
                                     </div>
                                 </div>
                             </div>

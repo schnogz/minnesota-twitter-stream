@@ -1,8 +1,8 @@
 #login-page {
     height:100%;
     background:
-        linear-gradient(rgba(0, 0, 0, 0.4),
-        rgba(0, 0, 0, 0.4)),
+        linear-gradient(rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)),
         url(../images/login-bg.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -51,15 +51,6 @@
     margin-left: 5px;
 }
 
-img.tweet-buttons {
-    opacity: 0.2;
-}
-
-img.tweet-buttons:hover {
-    opacity: 1;
-    cursor: pointer;
-}
-
 .sidebar-profile-pic {
     border: 1px solid #e1e8ed;
     border-radius: 20%;
@@ -67,6 +58,22 @@ img.tweet-buttons:hover {
 
 .tweet-wrapper:hover {
     background-color: #e1e8ed;
+}
+
+.tweet-icons:hover .icon-reply svg g {
+    fill: #56A9C7;
+}
+
+.tweet-icons:hover .icon-retweet svg g {
+    fill: #5C913B;
+}
+
+.tweet-icons:hover .icon-favorite svg g {
+    fill: #FFAC33;
+}
+
+.tweet-icons:hover  .icon-details svg g {
+    fill: #56A9C7;
 }
 
 h3.tweet-name {

@@ -1,13 +1,24 @@
 angular.module('mnTweets').controller('mainCtrl', [
 	'$scope',
 	'$mdSidenav',
-	'$mdBottomSheet',
-	'$log',
+	'mapConfig',
 function(
 	$scope,
 	$mdSidenav,
-	$mdBottomSheet
+	mapConfig
 ){
+	$scope.title ="Tweets From Minnesota";
+	$scope.count = 0;
+	$scope.tweetsMissed = 0;
+	$scope.tweets = [];
+	$scope.tweetMarks = [];
+	$scope.trends = null;
+	$scope.isTweetHovered = false;
+	$scope.map = mapConfig;
+	$scope.showHideSidebar = function () {
+		$mdBottomSheet.hide();
+		$mdSidenav('left').toggle();
+	};
 
 	angular.element(document).on('visibilitychange', function(e) {
 		// if page is now active, reset missed tweets count and update page title
@@ -18,58 +29,16 @@ function(
 		}
 	});
 
-	$scope.title ="Tweets From Minnesota";
-	$scope.count = 0;
-	$scope.tweetsMissed = 0;
-	$scope.tweets = [];
-	$scope.tweetMarks = [];
-	$scope.trends = null;
-
-	$scope.showHideSidebar = function () {
-		$mdBottomSheet.hide();
-		$mdSidenav('left').toggle();
-	};
-
-	// map configuration
-	// TODO: move into service or json file
-	$scope.map = {
-		center: {
-			latitude: 46.50,
-			longitude: -94.30
-		},
-		zoom: 7,
-		options: {
-			draggable: true,
-			minZoom: 7,
-			disableDefaultUI: true,
-			styles: [{"featureType":"water","stylers":[{"color":"#0e171d"}]},{"featureType":"landscape","stylers":[{"color":"#1e303d"}]},{"featureType":"road","stylers":[{"color":"#1e303d"}]},{"featureType":"poi","stylers":[{"visibility":"off"}]},{"featureType":"transit","stylers":[{"color":"#182731"},{"visibility":"simplified"}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"color":"#f0c514"},{"visibility":"off"}]},{"featureType":"poi","elementType":"labels.text.stroke","stylers":[{"color":"#1e303d"},{"visibility":"off"}]},{"featureType":"transit","elementType":"labels.text.fill","stylers":[{"color":"#e77e24"},{"visibility":"off"}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#94a5a6"}]},{"featureType":"administrative","elementType":"labels","stylers":[{"visibility":"simplified"},{"color":"#e84c3c"}]},{"featureType":"administrative.country","elementType":"labels","stylers":[{"visibility":"off"},{"color":"#e84c3c"}]},{"featureType":"poi","stylers":[{"color":"#e84c3c"},{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"visibility":"off"}]},{"featureType": "road.local","elementType": "geometry.fill","stylers": [{"color": "#CCFF33"},{"lightness": 17}]}]
-		}
-	};
-
-	// #1e303d, 30,48,61 -- dark blue
-	// #94a5a6 -- light baby blue
-	// #e84c3c 232,76,60  -- dark red
-
+	// TweetMarker class constructor
 	function TweetMarker(id, latitude, longitude,text) {
 		this.id = id;
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.title = text;
-		this.showTweetDetails = function(eventData) {
-			$mdBottomSheet.show({
-				parent: angular.element(document.getElementById('content')),
-				templateUrl: 'js/app/templates/tweet-details.html',
-				controller: 'tweetDetailsCtrl'
-				//scope: eventData.model,
-				//bindToController: true,
-				//targetEvent: eventData
-			}).then(function (clickedItem) {
-				clickedItem && console.log(clickedItem.name + ' clicked!');
-			});
-		};
-		this.icon = "/images/icon.png";
+		this.icon = "/images/tweet-mark.png";
 	}
 
+	// Tweet class constructor
 	function Tweet(id, latitude, longitude, text, user_picture, user_name, user_screenName) {
 		this.markInfo =  new TweetMarker(id, latitude, longitude, text, user_picture);
 		this.tweetText = text;
@@ -114,9 +83,11 @@ function(
 
 			$scope.$apply();
 
-			// auto scroll to latest tweets in sidebar
-			var sidebar = document.getElementById('sidebar');
-			sidebar.scrollTop = sidebar.scrollHeight;
+			// if user is not hovering a tweet, auto scroll to latest tweets in sidebar
+			if (!$scope.isTweetHovered) {
+				var sidebar = document.getElementById('sidebar');
+				sidebar.scrollTop = sidebar.scrollHeight;
+			}
 
 			// update page title if user is currently viewing page
 			if (window.document.hidden) {

@@ -1,3 +1,10 @@
 angular.module('mnTweets').service("dataService", ['$rootScope', function($rootScope) {
-	//TODO: move socket i/o functionality into here
+
+	// #1e303d, 30,48,61 -- dark blue
+	// #94a5a6 -- light baby blue
+	// #e84c3c 232,76,60  -- dark red
+
+
+	// map configuration
+	$rootScope
 }]);
