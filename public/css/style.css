@@ -41,14 +41,12 @@
 #sidebar {
     overflow-x: hidden;
 }
-.sidebar-tweet-summary {
-    padding: 0 10px;
-}
 
 .sidebar-tweet-details {
     min-width: 360px;
     overflow-x: hidden;
     margin-left: 5px;
+    padding: 6px 10px 0 14px;
 }
 
 .sidebar-profile-pic {
@@ -56,6 +54,9 @@
     border-radius: 20%;
 }
 
+.tweet-wrapper {
+    padding-left: 4px;
+}
 .tweet-wrapper:hover {
     background-color: #e1e8ed;
 }
@@ -79,17 +80,17 @@
 h3.tweet-name {
     font-weight: bold;
     color: #292f33;
-    font-size: 18px;
+    font-size: 1.3em;
 }
 
 h3.tweet-screen-name {
     font-weight: lighter;
     color: #474D51;
-    font-size: 14px;
+    font-size: 1.15em;
 }
 
 p.tweet-text {
-    font-size: 1.05em;
+    font-size: 1em;
     line-height: 1.2;
 }
 

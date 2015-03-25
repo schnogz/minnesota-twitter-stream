@@ -12,7 +12,12 @@ app.config(["$routeProvider", "$mdThemingProvider", "$mdIconProvider", function 
 	});
 
 	// icon configurations
-	$mdIconProvider.icon("menu", "images/menu.svg", 24);
+	$mdIconProvider
+		.icon("menu", "images/menu.svg", 24)
+		.icon("twitter-retweet", "images/twitter-buttons/retweet.svg", 24)
+		.icon("twitter-details", "images/twitter-buttons/details.svg", 24)
+		.icon("twitter-favorite", "images/twitter-buttons/favorite.svg", 24)
+		.icon("twitter-reply", "images/twitter-buttons/reply.svg", 24);
 
 	// theme configurations
 	$mdThemingProvider.theme('default')

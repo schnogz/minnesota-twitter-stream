@@ -16,7 +16,6 @@ function(
 	$scope.isTweetHovered = false;
 	$scope.map = mapConfig;
 	$scope.showHideSidebar = function () {
-		$mdBottomSheet.hide();
 		$mdSidenav('left').toggle();
 	};
 
