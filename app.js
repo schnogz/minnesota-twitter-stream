@@ -2,8 +2,6 @@
 var express = require('express');
 
 // import middleware
-//var static = require('serve-static');
-var favicon = require('serve-favicon');
 var logger = require('morgan');
 var methodOverride = require('method-override');
 var session = require('express-session');

@@ -17,8 +17,14 @@ Preparing The Dev Environment
 ========
 
 * Clone repo.
+* Ensure Node, NPM, and Bower are installed globally.
 * From root directory, run: `npm install`, `bower install` to pull dependencies.
-* Create a config directory at application root and add twitter.js.
+* Create a config directory at application root and add twitter.js. Twitter.js should export a module that is an object
+  containing a Twitter consumer_key and consumer_secret. For example:
+    module.exports = {
+        consumer_key: "abc123",
+        consumer_secret: "xyz987"
+    };s
 * To start the application server, from the root directory run: `node app`.
 * Browse to localhost:3000 and enjoy.
 
@@ -28,7 +34,7 @@ Planned Future Revisions
 * Add splash screen explaining app.
 * Add tweet details bottom pane.
 * Add tweet about app buttom.
-* Add ability to rewteet, favortie tweets
+* Add ability to rewteet, favorite tweets
 
 License
 ========
