@@ -1,34 +1,28 @@
-# Twitter Stream Minnesota
+# minnesota-twitter-stream
 ***
 
-About
+Overview
 ========
-
 Streams and maps Minnesotan tweets in realtime using the Twitter Streaming API, Node.js, OAuth, AngularJs, Express and Socket.io.
-
 Currently the stream is only tracking tweets with geolocation tags.
 
 Demo
 =======
-
 This is still a work in progress, demo coming soon!
 
-Preparing The Dev Environment
+Local Development Setup
 ========
-
 * Clone repo.
 * Ensure Node, NPM, and Bower are installed globally.
-* From root directory, run: `npm install`, `bower install` to pull dependencies.
-* Create a config directory at application root and add twitter.js. Twitter.js should export a module that is an object
-  containing a Twitter consumer_key and consumer_secret. For example:
-    module.exports = {
-        consumer_key: "abc123",
-        consumer_secret: "xyz987"
-    };s
+* To pull dependencies run: 
+```
+  npm install && bower install
+```
+* Edit `config/api-keys.js` to include your twiiter
 * To start the application server, from the root directory run: `node app`.
-* Browse to localhost:3000 and enjoy.
+* Browse to localhost:3000.
 
-Planned Future Revisions
+TODO's
 ========
 * Tidy up UI (sidebar, tweet markers, twitter login).
 * Add splash screen explaining app.
@@ -38,8 +32,6 @@ Planned Future Revisions
 
 License
 ========
-
-Copyright 2015 Andrew Schneider.
-Licensed under the MIT License.
+Copyright 2017 Andrew Schneider.
  
 

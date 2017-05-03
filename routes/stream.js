@@ -1,5 +1,5 @@
 var twitter = require('ntwitter');
-var twitterConfig = require('./../config/twitter');
+var twitterConfig = require('./../config/api-keys');
 var io = require('socket.io').listen(3001, {log: false});
 
 exports.stream = function (request, response) {
