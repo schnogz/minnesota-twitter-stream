@@ -1,5 +1,4 @@
 # minnesota-twitter-stream
-***
 
 Overview
 ========
@@ -16,7 +15,7 @@ Local Development Setup
 * Ensure Node, NPM, and Bower are installed globally.
 * To pull dependencies run `npm install`
 * Edit `config/api-keys.js` to include your twitter consumer key and secret.
-* To start the application server, from the root directory run: `node app`.
+* To start the application server, from the root directory run: `npm start`.
 * Browse to localhost:3000.
 
 TODO's
@@ -25,7 +24,7 @@ TODO's
 * Add splash screen explaining app.
 * Add tweet details bottom pane.
 * Add tweet about app buttom.
-* Add ability to rewteet, favorite tweets
+* Add ability to retweet, favorite tweets
 
 License
 ========

@@ -1,9 +1,8 @@
-var twitter = require('ntwitter');
-var twitterConfig = require('./../config/twitter');
+const twitter = require('twitter');
+const twitterConfig = require('./../config/api-keys');
 
 exports.trends = function (request, response) {
   if (request.session.oauth) {
-
     var twitConnection = new twitter({
       consumer_key: twitterConfig.consumer_key,
       consumer_secret: twitterConfig.consumer_secret,

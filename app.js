@@ -1,24 +1,23 @@
 // import express
-var express = require('express');
+const express = require('express');
 
 // import middleware
-var logger = require('morgan');
-var methodOverride = require('method-override');
-var session = require('express-session');
-var bodyParser = require('body-parser');
-var multer = require('multer');
-var errorHandler = require('errorhandler');
-var cookieParser = require('cookie-parser');
-var path = require('path');
+const logger = require('morgan');
+const methodOverride = require('method-override');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const errorHandler = require('errorhandler');
+const cookieParser = require('cookie-parser');
+const path = require('path');
 
 // import routes
-var streamRoute = require('./routes/stream');
-var error404 = require('./routes/error/404');
-var error500 = require('./routes/error/500');
-var trendsRoute = require('./routes/trends');
-var authRoute = require('./routes/auth');
+const streamRoute = require('./routes/stream');
+const error404 = require('./routes/error/404');
+const error500 = require('./routes/error/500');
+const trendsRoute = require('./routes/trends');
+const authRoute = require('./routes/auth');
 
-var app = express();
+const app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -29,7 +28,6 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(multer());
 app.use(methodOverride());
 app.use(cookieParser());
 app.use(session({

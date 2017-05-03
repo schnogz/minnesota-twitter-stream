@@ -1,7 +1,8 @@
 angular
   .module('mnTweets')
-  .controller('mainCtrl', ['$scope', '$mdSidenav', 'mapConfig',
-  function ($scope, $mdSidenav, mapConfig) {
+  .controller('mainCtrl', ['$scope', '$mdSidenav', 'mapConfig', '$mangolarSocketIo',
+    function ($scope, $mdSidenav, mapConfig,  $mangolarSocketIo
+  ) {
     $scope.title = "Tweets From Minnesota";
     $scope.count = 0;
     $scope.tweetsMissed = 0;
@@ -46,51 +47,41 @@ angular
     }
 
     // initialize socket connection
-    var socket = io.connect('http://localhost:3001');
-    window.socket = socket;
+    $mangolarSocketIo.on('newTweet', function (tweet) {
+    // some tweets don't seem to have geo coordinates... wtf?
+    if (tweet.coordinates && tweet.coordinates.coordinates) {
 
-    //TODO: ajax into new endpoint after successful twitter login
-    /* socket.on("newTrendData", function (data) {
-     console.log(data);
-     $scope.trends = data[0].trends;
-     $scope.$apply();
-     });	*/
+      var twit = new Tweet(
+        tweet.id,
+        tweet.coordinates.coordinates[1],
+        tweet.coordinates.coordinates[0],
+        tweet.text,
+        tweet.user.profile_image_url,
+        tweet.user.name,
+        tweet.user.screen_name
+      );
 
-    socket.on('newTweet', function (tweet) {
-      // some tweets don't seem to have geo coordinates... wtf?
-      if (tweet.coordinates && tweet.coordinates.coordinates) {
+      $scope.tweetMarks.push(twit.markInfo);
+      $scope.tweets.push(twit);
 
-        var twit = new Tweet(
-          tweet.id,
-          tweet.coordinates.coordinates[1],
-          tweet.coordinates.coordinates[0],
-          tweet.text,
-          tweet.user.profile_image_url,
-          tweet.user.name,
-          tweet.user.screen_name
-        );
+      $scope.count++;
 
-        $scope.tweetMarks.push(twit.markInfo);
-        $scope.tweets.push(twit);
+      $scope.$apply();
 
-        $scope.count++;
-
-        $scope.$apply();
-
-        // if user is not hovering a tweet, auto scroll to latest tweets in sidebar
-        if (!$scope.isTweetHovered) {
-          var sidebar = document.getElementById('sidebar');
-          sidebar.scrollTop = sidebar.scrollHeight;
-        }
-
-        // update page title if user is currently viewing page
-        if (window.document.hidden) {
-          $scope.tweetsMissed++;
-          window.document.title = '(' + $scope.tweetsMissed + ')' + ' Minnesota Tweet Map';
-        }
-      } else {
-        //TODO: investigate how to plot tweet
-        console.log(tweet);
+      // if user is not hovering a tweet, auto scroll to latest tweets in sidebar
+      if (!$scope.isTweetHovered) {
+        var sidebar = document.getElementById('sidebar');
+        sidebar.scrollTop = sidebar.scrollHeight;
       }
-    });
-  }]);
+
+      // update page title if user is currently viewing page
+      if (window.document.hidden) {
+        $scope.tweetsMissed++;
+        window.document.title = '(' + $scope.tweetsMissed + ')' + ' Minnesota Tweet Map';
+      }
+    } else {
+      //TODO: investigate how to plot tweet
+      console.log(tweet);
+    }
+  });
+}]);
