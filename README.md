@@ -14,11 +14,8 @@ Local Development Setup
 ========
 * Clone repo.
 * Ensure Node, NPM, and Bower are installed globally.
-* To pull dependencies run: 
-```
-  npm install && bower install
-```
-* Edit `config/api-keys.js` to include your twiiter
+* To pull dependencies run `npm install`
+* Edit `config/api-keys.js` to include your twitter consumer key and secret.
 * To start the application server, from the root directory run: `node app`.
 * Browse to localhost:3000.
 

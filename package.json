@@ -22,6 +22,12 @@
     "tweets",
     "minnesota"
   ],
+  "scripts": {
+    "postinstall": "bower install"
+  },
+  "engines": {
+    "node": "6.9.5"
+  },
   "dependencies": {
     "body-parser": "1.17.1",
     "cookie-parser": "1.4.3",

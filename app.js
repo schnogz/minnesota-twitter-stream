@@ -28,19 +28,19 @@ app.set('view engine', 'jade');
 // register middleware stack
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(multer());
 app.use(methodOverride());
 app.use(cookieParser());
 app.use(session({
-	resave: true,
-	saveUninitialized: true,
-	secret: 'super serial secret'
+  resave: true,
+  saveUninitialized: true,
+  secret: 'super serial secret'
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 if (app.get('env') === 'development') {
-	app.use(errorHandler());
+  app.use(errorHandler());
 }
 
 // register routes/endpoints
@@ -52,21 +52,21 @@ app.get('/auth/twitter', authRoute.auth);
 app.get('/auth/twitter/callback', authRoute.authCallback);
 
 // catch and redirect server errors
-app.use(function(error, request, response) {
-	console.error(error.stack);
-	response.redirect('/error/500');
+app.use(function (error, request, response) {
+  console.error(error.stack);
+  response.redirect('/error/500');
 });
 
 // redirect undefined routes to 404 page
-app.use(function(request, response) {
-	console.error(request);
-	request.session.invalidUrl = request.url;
-	response.redirect('/error/404');
+app.use(function (request, response) {
+  console.error(request);
+  request.session.invalidUrl = request.url;
+  response.redirect('/error/404');
 });
 
 // start server
-app.listen(app.get('port'), function(){
-	console.log('Express server listening on port ' + app.get('port'));
+app.listen(app.get('port'), function () {
+  console.log('Express server listening on port ' + app.get('port'));
 });
 
 
