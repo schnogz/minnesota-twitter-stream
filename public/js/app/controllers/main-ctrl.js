@@ -1,7 +1,7 @@
 angular
   .module('mnTweets')
-  .controller('mainCtrl', ['$scope', '$mdSidenav', 'mapConfig', '$mangolarSocketIo',
-    function ($scope, $mdSidenav, mapConfig,  $mangolarSocketIo
+  .controller('mainCtrl', ['$scope', '$mdSidenav', 'mapConfig', 'socket',
+    function ($scope, $mdSidenav, mapConfig, socket
   ) {
     $scope.title = "Tweets From Minnesota";
     $scope.count = 0;
@@ -47,7 +47,7 @@ angular
     }
 
     // initialize socket connection
-    $mangolarSocketIo.on('newTweet', function (tweet) {
+    socket.on('newTweet', function (tweet) {
     // some tweets don't seem to have geo coordinates... wtf?
     if (tweet.coordinates && tweet.coordinates.coordinates) {
 

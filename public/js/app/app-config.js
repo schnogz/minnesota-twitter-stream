@@ -1,9 +1,7 @@
 angular
-  .module('mnTweets', ['uiGmapgoogle-maps', 'ngRoute', 'ngMaterial', 'mangolar-socket.io'])
-  .config(["$routeProvider", "$mdThemingProvider", "$mdIconProvider", '$mangolarSocketIoProvider',
-    function ($routeProvider, $mdThemingProvider, $mdIconProvider, $mangolarSocketIoProvider) {
-      // setup socket.io
-      $mangolarSocketIoProvider.setConnectionUrl("http://localhost:3001");
+  .module('mnTweets', ['uiGmapgoogle-maps', 'ngRoute', 'ngMaterial'])
+  .config(["$routeProvider", "$mdThemingProvider", "$mdIconProvider",
+    function ($routeProvider, $mdThemingProvider, $mdIconProvider) {
 
       // route configurations
       $routeProvider.when("/", {
@@ -186,6 +184,31 @@ angular
         }
       ]
     }
-  });
-
+  })
+// Demonstrate how to register services
+// In this case it is a simple value service.
+  .factory('socket', ['$rootScope', function ($rootScope) {
+  var socket = io.connect();
+  return {
+    on: function (eventName, callback) {
+      socket.on(eventName, function () {
+        console.log(eventName);
+        var args = arguments;
+        $rootScope.$apply(function () {
+          callback.apply(socket, args);
+        });
+      });
+    },
+    emit: function (eventName, data, callback) {
+      socket.emit(eventName, data, function () {
+        var args = arguments;
+        $rootScope.$apply(function () {
+          if (callback) {
+            callback.apply(socket, args);
+          }
+        });
+      })
+    }
+  }
+}]);
 
