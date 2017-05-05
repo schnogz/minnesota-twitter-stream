@@ -7,7 +7,7 @@
 
 <div flex layout="row">
   <md-sidenav md-is-locked-open="$mdMedia('gt-md')" class="md-whiteframe-z2" md-component-id="left" id="sidebar">
-    <h1 ng-show="!tweets.length">Nobody has tweeted yet!</h1>
+    <h2 ng-show="!tweets.length" style="text-align: center">Nobody has tweeted from a location yet  :(</h2>
     <md-list ng-mouseenter="isTweetHovered = true" ng-mouseleave="isTweetHovered = false">
       <md-item ng-repeat="twit in tweets" class="md-padding">
         <md-whiteframe class="md-whiteframe-z1 tweet-wrapper" layout>

@@ -5,7 +5,7 @@ Overview
 Streams and maps Minnesotan tweets in realtime using the Twitter Streaming API, Node.js, OAuth, AngularJs, Express and Socket.io.
 Currently the stream is only tracking tweets with geolocation tags.
 
-View the application [here](https://minnesota-twitter-stream.herokuapp.com/#/)
+View the application [here](http://minnesota-twitter-stream.herokuapp.com/)
 
 Local Development Setup
 ========
