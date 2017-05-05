@@ -49,7 +49,7 @@
         }
 
         socket.on('init', function (data) {
-          window.alert(data.msg)
+          console.log('socket connection initialized!')
         });
 
         // initialize socket connection

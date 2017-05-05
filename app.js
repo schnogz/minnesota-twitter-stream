@@ -8,19 +8,15 @@ const path = require('path');
 const express = require('express');
 const http = require('http');
 // routes
-const socket = require('./routes/socket.js');
-// TODO: hook up auth again...
-//const streamRoute = require('./routes/stream');
-//const error404 = require('./routes/error/404');
-//const error500 = require('./routes/error/500');
-//const trendsRoute = require('./routes/trends');
-//const authRoute = require('./routes/auth');
+const twitterStream = require('./routes/twitter-stream.js');
 
 var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
 server.listen(3000);
+
+io.on('connection', twitterStream);
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -39,5 +35,3 @@ app.use(function (error, request, response) {
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
-
-io.on('connection', socket);
