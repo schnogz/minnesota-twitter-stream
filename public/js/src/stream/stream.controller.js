@@ -54,6 +54,8 @@
 
         // initialize socket connection
         socket.on('newTweet', function (tweet) {
+          // heroku debugging
+          console.info(tweet);
           // some tweets don't seem to have geo coordinates... wtf?
           if (tweet.coordinates && tweet.coordinates.coordinates) {
 
