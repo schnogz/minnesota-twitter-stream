@@ -9,13 +9,16 @@
     "url": "https://github.com/schnogz"
   },
   "dependencies": {
-    "angular-material": "~0.8.3",
-    "angular": "~1.3.14",
-    "angular-aria": "~1.3.14",
-    "angular-animate": "~1.3.14",
-    "angular-google-maps": "~2.0.16",
-    "lodash": "~2.4.1",
-    "angular-route": "~1.3.14",
-    "mangular-socket-io": "mangolar-socket-io#^0.0.4"
+    "angular-material": "1.1.4",
+    "angular": "1.5.11",
+    "angular-aria": "1.5.11",
+    "angular-animate": "1.5.11",
+    "angular-route": "1.5.11",
+    "lodash": "4.17.4",
+    "mangular-socket-io": "mangolar-socket-io#^0.0.4",
+    "ngmap": "1.18.4"
+  },
+  "resolutions": {
+    "angular": "1.5.11"
   }
 }

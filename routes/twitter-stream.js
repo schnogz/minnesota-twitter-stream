@@ -12,7 +12,7 @@ var rt = new Twitter({
 module.exports = function (socket) {
 
   // Stream tweets that are geotagged to MN
-  rt.stream('statuses/filter', {locations: '-93.462805,44.859106,-92.953844,45.095596'}, function (stream) {
+  rt.stream('statuses/filter', { locations: '-93.462805,44.859106,-92.953844,45.095596' }, function (stream) {
       stream.on('data', function (data) {
         console.info(data.text);
         socket.emit('newTweet', data);

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('mnTweets', ['uiGmapgoogle-maps', 'ngRoute', 'ngMaterial'])
+    .module('mnTweets', ['ngMap', 'ngRoute', 'ngMaterial'])
     .config(["$routeProvider", "$mdThemingProvider", "$mdIconProvider",
       function ($routeProvider, $mdThemingProvider, $mdIconProvider) {
 

@@ -12,6 +12,7 @@
         $scope.tweetMarks = [];
         $scope.trends = null;
         $scope.isTweetHovered = false;
+        // TODO: fix map
         $scope.map = mapConfig;
         $scope.showHideSidebar = function () {
           $mdSidenav('left').toggle();
