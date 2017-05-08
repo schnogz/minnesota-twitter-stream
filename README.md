@@ -7,6 +7,15 @@ Currently the stream is only tracking tweets with geolocation tags.
 
 View the application [here](http://minnesota-twitter-stream.herokuapp.com/)
 
+TODO's
+========
+* Heroku socket connection not fully functional
+* Add Twitter auth back
+* Update Bower deps 
+* Remove custom Angular Material CSS
+* Figure out how to plot tweets that don't have a location (at least display them in sidenav)
+* Add ability to retweet, favorite tweets
+
 Local Development Setup
 ========
 * Clone repo.
@@ -15,14 +24,6 @@ Local Development Setup
 * Edit `config/api-keys.js` to include your twitter consumer key and secret.
 * To start the application server, from the root directory run: `npm start`.
 * Browse to localhost:3000.
-
-TODO's
-========
-* Tidy up UI (sidebar, tweet markers, twitter login).
-* Add splash screen explaining app.
-* Add tweet details bottom pane.
-* Add tweet about app buttom.
-* Add ability to retweet, favorite tweets
 
 License
 ========
