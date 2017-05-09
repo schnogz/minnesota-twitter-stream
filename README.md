@@ -9,7 +9,6 @@ View the application [here](http://minnesota-twitter-stream.herokuapp.com/)
 
 TODO's
 ========
-* Update UI to use ngMaps
 * Fix sidenav and tweet display from ngMaterial update
 * Heroku socket connection not fully functional
 * Add Twitter auth back

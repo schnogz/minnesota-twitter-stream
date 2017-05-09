@@ -15,7 +15,6 @@
     "angular-animate": "1.5.11",
     "angular-route": "1.5.11",
     "lodash": "4.17.4",
-    "mangular-socket-io": "mangolar-socket-io#^0.0.4",
     "ngmap": "1.18.4"
   },
   "resolutions": {

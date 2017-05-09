@@ -16,7 +16,9 @@ module.exports = function (socket) {
 
   // stream tweets that are geotagged to MN
   rt.stream('statuses/filter', { locations: '-93.462805,44.859106,-92.953844,45.095596' }, function (stream) {
+    console.log('STREAM START');
     stream.on('data', function (data) {
+      console.log('TWITTER DATA');
       // stringify large object otherwise socket.io pukes
       socket.emit('newTweet', JSON.stringify(data));
     });
