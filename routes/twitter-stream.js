@@ -1,11 +1,12 @@
 const Twitter = require('twitter');
 const twitterConfig = require('./../config/api-keys');
 
+// pull twitter keys from node env vars if available
 var rt = new Twitter({
-  consumer_key: twitterConfig.consumer_key,
-  consumer_secret: twitterConfig.consumer_secret,
-  access_token_key: twitterConfig.access_token_key,
-  access_token_secret: twitterConfig.access_token_secret,
+  consumer_key: process.env.heroku_twit_key ? process.env.heroku_twit_ckey : twitterConfig.consumer_key,
+  consumer_secret: process.env.heroku_twit_secret ? process.env.heroku_twit_secret : twitterConfig.consumer_secret,
+  access_token_key: process.env.heroku_twit_token_key ? process.env.heroku_twit_token_key : twitterConfig.access_token_key,
+  access_token_secret: process.env.heroku_twit_token_secret ? process.env.heroku_twit_token_secret :twitterConfig.access_token_secret
 });
 
 // export function for listening to the socket
@@ -16,9 +17,7 @@ module.exports = function (socket) {
 
   // stream tweets that are geotagged to MN
   rt.stream('statuses/filter', { locations: '-93.462805,44.859106,-92.953844,45.095596' }, function (stream) {
-    console.log('STREAM START');
     stream.on('data', function (data) {
-      console.log('TWITTER DATA');
       // stringify large object otherwise socket.io pukes
       socket.emit('newTweet', JSON.stringify(data));
     });
