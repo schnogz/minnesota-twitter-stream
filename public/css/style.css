@@ -132,12 +132,6 @@ md-sidenav md-list {
   overflow: hidden;
 }
 
-#content {
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 5px;
-}
-
 #content .md-button.share {
   background-color: transparent;
   border: none;

@@ -10,12 +10,15 @@ var rt = new Twitter({
 
 // export function for listening to the socket
 module.exports = function (socket) {
+  socket.emit('init', {
+    msg: 'socket connection started'
+  });
 
-  // Stream tweets that are geotagged to MN
-  rt.stream('statuses/filter', { locations: '-93.462805,44.859106,-92.953844,45.095596' }, function (stream) {
+  // stream tweets that are geotagged to MN
+  rt.stream('statuses/filter', {locations: '-93.462805,44.859106,-92.953844,45.095596'}, function (stream) {
       stream.on('data', function (data) {
-        console.info(data.text);
-        socket.emit('newTweet', data);
+        // stringify large object otherwise socket.io pukes
+        socket.emit('newTweet', JSON.stringify(data));
       });
 
       stream.on('error', function (error) {
@@ -23,11 +26,6 @@ module.exports = function (socket) {
       });
     }
   );
-
-  // send the new user their name and a list of users
-  socket.emit('init', {
-    msg: 'socket connection started'
-  });
 
   socket.on('disconnect', function () {
     socket.broadcast.emit('disconnect', {

@@ -3,8 +3,8 @@
 
   angular
     .module('mnTweets')
-    .controller('streamCtrl', ['$scope', '$mdSidenav', 'mapConfig', 'socket',
-      function ($scope, $mdSidenav, mapConfig, socket) {
+    .controller('streamCtrl', ['$scope', '$mdSidenav', 'NgMap',
+      function ($scope, $mdSidenav, NgMap) {
         $scope.title = "Tweets From Minnesota";
         $scope.count = 0;
         $scope.tweetsMissed = 0;
@@ -12,11 +12,6 @@
         $scope.tweetMarks = [];
         $scope.trends = null;
         $scope.isTweetHovered = false;
-        // TODO: fix map
-        $scope.map = mapConfig;
-        $scope.showHideSidebar = function () {
-          $mdSidenav('left').toggle();
-        };
 
         angular.element(document).on('visibilitychange', function (e) {
           // if page is now active, reset missed tweets count and update page title
@@ -25,6 +20,12 @@
             window.document.title = 'Minnesota Tweet Map';
             $scope.tweetsMissed = 0;
           }
+        });
+
+        NgMap.getMap().then(function(map) {
+          map.zoom =12;
+          console.log('markers', map.markers);
+          console.log('shapes', map.shapes);
         });
 
         // TweetMarker class constructor
@@ -49,14 +50,20 @@
           };
         }
 
-        socket.on('init', function (data) {
-          console.log('socket connection initialized!')
-        });
+        var socket = io.connect({transports: ['websocket'], upgrade: false});
 
         // initialize socket connection
-        socket.on('newTweet', function (tweet) {
+        socket.on('init', function (data) {
+          console.log(data.msg)
+        });
+
+        socket.on('newTweet', function (data) {
+          // parse the stringified tweet object
+          var tweet = JSON.parse(data);
+
           // heroku debugging
           console.info(tweet);
+
           // some tweets don't seem to have geo coordinates... wtf?
           if (tweet.coordinates && tweet.coordinates.coordinates) {
 
