@@ -10,22 +10,11 @@ View the application [here](https://minnesota-twitter-stream.herokuapp.com/)
 TODO's
 ========
 * Fix sidenav and tweet display from ngMaterial update
+* Add bundling and minification of JS
 * Add Twitter auth back
-* Remove custom Angular Material CSS
 * Figure out how to plot tweets that don't have a location (at least display them in sidenav)
 * Add ability to retweet, favorite tweets
-
-Local Development Setup
-========
-* Clone repo.
-* Ensure Node, NPM, and Bower are installed globally.
-* To pull dependencies run `npm install`
-* Edit `config/api-keys.js` to include your twitter consumer key and secret.
-* To start the application server, from the root directory run: `npm start`.
-* Browse to localhost:3000.
 
 License
 ========
 Copyright 2017 Andrew Schneider.
- 
-
