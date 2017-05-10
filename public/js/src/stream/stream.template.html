@@ -39,8 +39,13 @@
         {featureType: 'administrative.country', elementType: 'labels', stylers: [{visibility: 'off'}]},
         {featureType: 'poi', stylers: [{color: '#e84c3c'}, {visibility: 'off'}]},
         {featureType: 'administrative', elementType: 'geometry.fill', stylers: [{visibility: 'off'}]},
-        {featureType: 'road.local', elementType: 'geometry.fill', stylers: [{color: '#CCFF33'}, {lightness: 17}]}]"
-    ></map>
+        {featureType: 'road.local', elementType: 'geometry.fill', stylers: [{color: '#CCFF33'}, {lightness: 17}]}]">
+     <marker
+        ng-repeat="tweet in tweets"
+        position="{{tweet.location}}"
+        title="{{tweet.text}}">
+      </marker>
+    </map>
   </md-content>
 </div>
 

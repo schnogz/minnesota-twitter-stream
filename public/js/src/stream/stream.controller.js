@@ -4,10 +4,12 @@
   angular
     .module('mnTweets')
     .controller('streamCtrl', ['$scope', 'NgMap', function ($scope, NgMap) {
-      $scope.title = "Tweets From Minnesota";
       $scope.mapMarker = "/images/tweet-mark.png";
-      $scope.count = 0;
       $scope.tweets = [];
+
+      NgMap.getMap().then(function(map) {
+        $scope.map = map;
+      });
 
       var socket = io.connect({transports: ['websocket'], upgrade: false});
 
@@ -18,25 +20,37 @@
 
       socket.on('tweet', function (data) {
         // parse the stringified tweet object
-        var tweet = JSON.parse(data);
-
-        $scope.tweets.push({
-          id: tweet.id,
-          tweetUrl: "http://www.twitter.com/", // + user_screenName + "/status/" + id;
-          text: tweet.text,
-          location: {
-            lat: _.get(tweet, 'coordinates.coordinates[1]') ? tweet.coordinates.coordinates[1] : tweet.place.bounding_box.coordinates[0][0][1],
-            long: _.get(tweet, 'coordinates.coordinates[0]') ? tweet.coordinates.coordinates[0] : tweet.place.bounding_box.coordinates[0][0][0],
-          },
+        var tweetData = JSON.parse(data);
+        var tweet = {
+          id: tweetData.id,
+          text: tweetData.text,
+          location: _buildLocation(tweetData),
           user: {
-            picUrl: tweet.user.profile_image_url,
-            name: tweet.user.name,
-            screen_name: tweet.user.screen_name
+            picUrl: tweetData.user.profile_image_url,
+            name: tweetData.user.name,
+            screen_name: tweetData.user.screen_name
           }
-        });
+        };
 
-        $scope.count++;
+        $scope.tweets.push(tweet);
+
+        /* TODO: test this later
+        new google.maps.Marker({
+          position: new google.maps.LatLng(tweet.place.bounding_box.coordinates[0][0][1], tweet.place.bounding_box.coordinates[0][0][0]),
+          map: $scope.map,
+          draggable: false,
+          animation: google.maps.Animation.DROP
+        });
+        */
         $scope.$apply();
       });
+
+      function _buildLocation(tweet) {
+        if (_.get(tweet, 'coordinates.coordinates[1]')) {
+          return '' + tweet.coordinates.coordinates[1] + ',' + tweet.coordinates.coordinates[0];
+        }
+
+        return '' + tweet.place.bounding_box.coordinates[0][0][1] + ',' + tweet.place.bounding_box.coordinates[0][0][0];
+      }
     }]);
 })();
