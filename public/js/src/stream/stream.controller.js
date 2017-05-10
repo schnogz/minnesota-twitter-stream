@@ -11,7 +11,48 @@
         $scope.tweets = [];
         $scope.tweetMarks = [];
         $scope.trends = null;
-        $scope.isTweetHovered = false;
+
+        var imagePath = 'https://image.flaticon.com/icons/svg/23/23957.svg';
+
+        $scope.todos = [
+          {
+            face : imagePath,
+            what: 'Brunch this weekend?',
+            who: 'Min Li Chan',
+            when: '3:08PM',
+            notes: " I'll be in your neighborhood doing errands"
+          },
+          {
+            face : imagePath,
+            what: 'Brunch this weekend?',
+            who: 'Min Li Chan',
+            when: '3:08PM',
+            notes: " I'll be in your neighborhood doing errands"
+          },
+          {
+            face : imagePath,
+            what: 'Brunch this weekend?',
+            who: 'Min Li Chan',
+            when: '3:08PM',
+            notes: " I'll be in your neighborhood doing errands"
+          },
+          {
+            face : imagePath,
+            what: 'Brunch this weekend?',
+            who: 'Min Li Chan',
+            when: '3:08PM',
+            notes: " I'll be in your neighborhood doing errands"
+          },
+          {
+            face : imagePath,
+            what: 'Brunch this weekend?',
+            who: 'Min Li Chan',
+            when: '3:08PM',
+            notes: " I'll be in your neighborhood doing errands"
+          },
+        ];
+
+
 
         angular.element(document).on('visibilitychange', function (e) {
           // if page is now active, reset missed tweets count and update page title
