@@ -2,25 +2,16 @@
   <md-sidenav flex md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2">
     <md-list id="tweet-list">
       <md-subheader id="tweet-list-subheader" layout="row" layout-align="center center">
-        <span>{{todos.length}} tweets from Minnesota</span>
+        <span>{{tweets.length}} tweets from Minnesota</span>
       </md-subheader>
-      <md-list-item class="md-2-line" ng-repeat="item in todos" ng-click="null">
-        <img class="md-avatar" alt="{{item.who}}" ng-src="{{item.face}}">
-        <div class="md-list-item-text tweet-content" layout="column">
-          <h4><b>{{ item.who }}</b> @twitter_handle</h4>
-          <p>Whether it is Snapchat, Twitter, Facebook, Yelp or just a note to co-workers or business officials,
-            the number of actual characters matters.
-          </p>
-        </div>
-      </md-list-item>
-      <!-- actual tweet html once hooked up-->
       <md-list-item class="md-2-line" ng-repeat="tweet in tweets" ng-click="null">
-        <img class="md-avatar" alt="{{tweet.userProfile.name}}" ng-src="{{tweet.userProfile.picture}}">
+        <img class="md-avatar" alt="{{tweet.user.name}}" ng-src="{{tweet.user.picUrl}}">
         <div class="md-list-item-text tweet-content" layout="column">
           <h4>
-            <b>{{tweet.userProfile.name}}</b> &#64;{{tweet.userProfile.screen_name}}
+            <b>{{tweet.user.name}}</b>
+            <span class="user-screen-name">&#64;{{tweet.user.screen_name}}</span>
           </h4>
-          <p>{{tweet.tweetText}}</p>
+          <p>{{tweet.text}}</p>
         </div>
       </md-list-item>
     </md-list>

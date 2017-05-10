@@ -19,7 +19,7 @@ module.exports = function (socket) {
   rt.stream('statuses/filter', { locations: '-93.462805,44.859106,-92.953844,45.095596' }, function (stream) {
     stream.on('data', function (data) {
       // stringify large object otherwise socket.io pukes
-      socket.emit('newTweet', JSON.stringify(data));
+      socket.emit('tweet', JSON.stringify(data));
     });
 
     stream.on('error', function (error) {

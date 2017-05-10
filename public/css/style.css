@@ -51,3 +51,7 @@ md-list-item.md-2-line .md-list-item-text p, md-list-item.md-2-line>.md-no-style
   line-height: 1em;
   color: #606060;
 }
+
+.user-screen-name {
+  margin-left: 3px;
+}
