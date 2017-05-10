@@ -34,3 +34,20 @@
 md-list#tweet-list {
   padding: 0;
 }
+
+div#tweet-list-subheader {
+  border-bottom: 1px solid #E8E8E8;
+  font-size: 1.1em;
+  font-weight: 900;
+}
+
+md-list-item.md-2-line, md-list-item.md-2-line {
+  border-bottom: 1px solid #E8E8E8;
+}
+
+md-list-item.md-2-line .md-list-item-text p, md-list-item.md-2-line>.md-no-style .md-list-item-text p {
+  font-size: 12px;
+  margin: 10px 0;
+  line-height: 1em;
+  color: #606060;
+}

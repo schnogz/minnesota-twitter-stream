@@ -1,77 +1,29 @@
 <div flex layout="row">
   <md-sidenav flex md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-z2">
     <md-list id="tweet-list">
-      <md-subheader layout="row" layout-align="center center">
+      <md-subheader id="tweet-list-subheader" layout="row" layout-align="center center">
         <span>{{todos.length}} tweets from Minnesota</span>
       </md-subheader>
-      <md-list-item class="md-3-line" ng-repeat="item in todos" ng-click="null">
-        <img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
-        <div class="md-list-item-text" layout="column">
-          <h3>{{ item.who }}</h3>
-          <h4>{{ item.what }}</h4>
-          <p>{{ item.notes }}</p>
+      <md-list-item class="md-2-line" ng-repeat="item in todos" ng-click="null">
+        <img class="md-avatar" alt="{{item.who}}" ng-src="{{item.face}}">
+        <div class="md-list-item-text tweet-content" layout="column">
+          <h4><b>{{ item.who }}</b> @twitter_handle</h4>
+          <p>Whether it is Snapchat, Twitter, Facebook, Yelp or just a note to co-workers or business officials,
+            the number of actual characters matters.
+          </p>
+        </div>
+      </md-list-item>
+      <!-- actual tweet html once hooked up-->
+      <md-list-item class="md-2-line" ng-repeat="tweet in tweets" ng-click="null">
+        <img class="md-avatar" alt="{{tweet.userProfile.name}}" ng-src="{{tweet.userProfile.picture}}">
+        <div class="md-list-item-text tweet-content" layout="column">
+          <h4>
+            <b>{{tweet.userProfile.name}}</b> &#64;{{tweet.userProfile.screen_name}}
+          </h4>
+          <p>{{tweet.tweetText}}</p>
         </div>
       </md-list-item>
     </md-list>
-    <!--
-    <md-list ng-mouseenter="isTweetHovered = true" ng-mouseleave="isTweetHovered = false">
-      <md-item ng-repeat="twit in tweets" class="md-padding">
-        <md-whiteframe class="md-whiteframe-z1 tweet-wrapper" layout>
-          <md-item-content>
-            <div class="md-tile-left">
-              <a target="_blank" href="{{twit.userProfile.url}}">
-                <img class="sidebar-profile-pic" height="50px" width="50px" ng-src="{{twit.userProfile.picture}}">
-              </a>
-            </div>
-            <div class="md-tile-content sidebar-tweet-details">
-              <div layout="row" layout-align="start center">
-                <div>
-                  <h3 class="tweet-name">{{twit.userProfile.name}}&nbsp;</h3>
-                </div>
-                <div>
-                  <h3 class="tweet-screen-name">&#64;{{twit.userProfile.screen_name}}</h3>
-                </div>
-              </div>
-              <div layout="row" layout-align="start start">
-                <p class="tweet-text">
-                  {{twit.tweetText}}
-                </p>
-              </div>
-              <div layout="row" layout-align="space-around center">
-                <div>
-                  <md-button class="tweet-icons" aria-label="Reply">
-                    <md-icon class="icon-reply" md-svg-src="twitter-reply" style="width: 18px; height: 14px;"></md-icon>
-                    <md-tooltip md-autohide="true" md-direction="left">Reply</md-tooltip>
-                  </md-button>
-                </div>
-                <div>
-                  <md-button class="tweet-icons" aria-label="Retweet">
-                    <md-icon class="icon-retweet" md-svg-src="twitter-retweet"
-                             style="width: 20px; height: 22px;"></md-icon>
-                    <md-tooltip md-autohide="true" md-direction="left">Retweet</md-tooltip>
-                  </md-button>
-                </div>
-                <div>
-                  <md-button class="tweet-icons" aria-label="Favorite">
-                    <md-icon class="icon-favorite" md-svg-src="twitter-favorite"
-                    " style="width: 18px; height: 22px;"></md-icon>
-                    <md-tooltip md-autohide="true" md-direction="left">Favorite</md-tooltip>
-                  </md-button>
-                </div>
-                <div>
-                  <md-button class="tweet-icons" aria-label="Details">
-                    <md-icon class="icon-details" md-svg-src="twitter-details"
-                             style="width: 25px; height: 25px;"></md-icon>
-                    <md-tooltip md-autohide="true" md-direction="left">Details</md-tooltip>
-                  </md-button>
-                </div>
-              </div>
-            </div>
-          </md-item-content>
-        </md-whiteframe>
-      </md-item>
-    </md-list>
-    -->
   </md-sidenav>
 
   <md-content flex id="content">
