@@ -1,4 +1,6 @@
 # minnesota-twitter-stream
+[![Dependencies](https://david-dm.org/schnogz/minnesota-twitter-stream.svg)](https://david-dm.org/schnogz/minnesota-twitter-stream.svg)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/schnogz/minnesota-twitter-stream/issues)
 
 Overview
 ========
