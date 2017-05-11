@@ -2,19 +2,17 @@
 
 Overview
 ========
-Streams and maps Minnesotan tweets in realtime using the Twitter Streaming API, Node.js, OAuth, AngularJs, Express and Socket.io.
-Currently the stream is only tracking tweets with geolocation tags.
+Streams and plots on a map Minnesota area tweets in real time.  Built using the Twitter API, Google Maps, 
+Node.js, Angular, Express and Socket.io.
 
 View the application [here](https://minnesota-twitter-stream.herokuapp.com/)
 
 TODO's
 ========
-* Use custom map markers
-* Add hover/click text to map markers with more info on tweet
-* Autoscroll the sidenav so newest tweets are visible
+* Clicking tweet in sidenav makes map marker bounce
+* Animate tweet appearance on sidebar
 * Move to SASS
-* Add bundling and minification of JS
-* Add Twitter auth to enable ability for user to retweet, reply to and favorite stream tweets
+* Bundle and minify JS
 
 License
 ========
