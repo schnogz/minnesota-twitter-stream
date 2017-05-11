@@ -7,8 +7,8 @@
       // route configurations
       $routeProvider
         .when("/", {
-          templateUrl: "js/src/login/login.template.html",
-          controller: "loginCtrl"
+          templateUrl: "js/src/welcome/welcome.template.html",
+          controller: "welcomeCtrl"
         })
         .when("/stream", {
           templateUrl: "js/src/stream/stream.template.html",

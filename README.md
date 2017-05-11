@@ -9,10 +9,11 @@ View the application [here](https://minnesota-twitter-stream.herokuapp.com/)
 
 TODO's
 ========
-* Clicking tweet in sidenav makes map marker bounce
-* Animate tweet appearance on sidebar
+* Clicking tweet in sidenav animates marker on map
+* Animate tweet entry/appearance on sidebar
 * Move to SASS
 * Bundle and minify JS
+* Add support for browser resize
 
 License
 ========

@@ -21,7 +21,7 @@
 
 #login-box {
   background-color: #E1E1E1;
-  max-width: 300px;
+  max-width: 500px;
   border: 0 solid;
   border-radius: 5px;
 }
@@ -51,7 +51,7 @@ md-list-item.md-2-line {
 
 md-list-item.md-2-line .md-list-item-text p, md-list-item.md-2-line>.md-no-style .md-list-item-text p {
   margin: 0 0 10px 0;
-  line-height: .95em;
+  line-height: 1em;
   color: #14171a;
   font-size: 14px;
   font-weight: normal;
