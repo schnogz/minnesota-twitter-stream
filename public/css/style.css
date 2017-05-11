@@ -30,7 +30,7 @@
   background-color: rgb(64, 153, 255);
 }
 
-/* SIDENAV */
+/* SIDEBAR */
 md-list#tweet-list {
   padding: 0;
 }
@@ -41,17 +41,45 @@ div#tweet-list-subheader {
   font-weight: 900;
 }
 
-md-list-item.md-2-line, md-list-item.md-2-line {
+md-list-item .md-no-style, md-list-item._md-button-wrap>div.md-button:first-child {
+  padding: 0;
+}
+
+md-list-item.md-2-line {
   border-bottom: 1px solid #E8E8E8;
 }
 
 md-list-item.md-2-line .md-list-item-text p, md-list-item.md-2-line>.md-no-style .md-list-item-text p {
-  font-size: 12px;
-  margin: 10px 0;
-  line-height: 1em;
-  color: #606060;
+  margin: 0 0 10px 0;
+  line-height: .95em;
+  color: #14171a;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.tweet-container div.tweet-img {
+  min-width: 70px;
+  padding: 10px;
+}
+
+.tweet-container div.tweet-img img {
+  border-radius: 8px;
+}
+
+.tweet-container div.tweet-content {
+  padding-right: 10px;
+}
+
+.tweet-user-name {
+  color: #14171a;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .user-screen-name {
   margin-left: 3px;
+  color: #657786;
+  font-weight: normal;
 }
+
+/* SIDEBAR ANIMATIONS */

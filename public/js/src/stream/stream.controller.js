@@ -24,7 +24,12 @@
         var tweet = {
           id: tweetData.id,
           text: tweetData.text,
-          location: _buildLocation(tweetData),
+          location: {
+            lat: _.get(tweetData, 'coordinates.coordinates[1]') ?
+              tweetData.coordinates.coordinates[1] : tweetData.place.bounding_box.coordinates[0][0][1],
+            long: _.get(tweetData, 'coordinates.coordinates[0]') ?
+              tweetData.coordinates.coordinates[0] : tweetData.place.bounding_box.coordinates[0][0][0],
+          },
           user: {
             picUrl: tweetData.user.profile_image_url,
             name: tweetData.user.name,
@@ -32,25 +37,21 @@
           }
         };
 
-        $scope.tweets.push(tweet);
-
-        /* TODO: test this later
         new google.maps.Marker({
-          position: new google.maps.LatLng(tweet.place.bounding_box.coordinates[0][0][1], tweet.place.bounding_box.coordinates[0][0][0]),
+          position: new google.maps.LatLng(tweet.location.lat, tweet.location.long),
           map: $scope.map,
           draggable: false,
-          animation: google.maps.Animation.DROP
+          animation: google.maps.Animation.DROP,
+          title: tweet.text,
+          icon:  {
+            url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+            size: new google.maps.Size(25, 30),
+          },
+          zIndex: $scope.tweets.length
         });
-        */
+
+        $scope.tweets.push(tweet);
         $scope.$apply();
       });
-
-      function _buildLocation(tweet) {
-        if (_.get(tweet, 'coordinates.coordinates[1]')) {
-          return '' + tweet.coordinates.coordinates[1] + ',' + tweet.coordinates.coordinates[0];
-        }
-
-        return '' + tweet.place.bounding_box.coordinates[0][0][1] + ',' + tweet.place.bounding_box.coordinates[0][0][0];
-      }
     }]);
 })();

@@ -4,14 +4,17 @@
       <md-subheader id="tweet-list-subheader" layout="row" layout-align="center center">
         <span>{{tweets.length}} tweets from Minnesota</span>
       </md-subheader>
-      <md-list-item class="md-2-line" ng-repeat="tweet in tweets" ng-click="null">
-        <img class="md-avatar" alt="{{tweet.user.name}}" ng-src="{{tweet.user.picUrl}}">
-        <div class="md-list-item-text tweet-content" layout="column">
-          <h4>
-            <b>{{tweet.user.name}}</b>
-            <span class="user-screen-name">&#64;{{tweet.user.screen_name}}</span>
-          </h4>
-          <p>{{tweet.text}}</p>
+      <md-list-item class="md-2-line" ng-repeat="tweet in tweets | reverse" ng-click="null">
+        <div class="tweet-container" flex layout="row" layout-align="space-between center">
+          <div class="tweet-img">
+            <img alt="{{tweet.user.name}}" ng-src="{{tweet.user.picUrl}}">
+          </div>
+          <div class="md-list-item-text tweet-content" layout="column">
+            <span class="tweet-user-name">{{tweet.user.name}}
+              <span class="user-screen-name">&#64;{{tweet.user.screen_name}}</span>
+            </span>
+            <p class="tweet-text">{{tweet.text}}</p>
+          </div>
         </div>
       </md-list-item>
     </md-list>
@@ -40,11 +43,6 @@
         {featureType: 'poi', stylers: [{color: '#e84c3c'}, {visibility: 'off'}]},
         {featureType: 'administrative', elementType: 'geometry.fill', stylers: [{visibility: 'off'}]},
         {featureType: 'road.local', elementType: 'geometry.fill', stylers: [{color: '#CCFF33'}, {lightness: 17}]}]">
-     <marker
-        ng-repeat="tweet in tweets"
-        position="{{tweet.location}}"
-        title="{{tweet.text}}">
-      </marker>
     </map>
   </md-content>
 </div>
