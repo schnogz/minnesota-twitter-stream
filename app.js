@@ -7,14 +7,15 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const express = require('express');
 const http = require('http');
-// routes
 const twitterStream = require('./routes/twitter-stream.js');
 
 var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
-server.listen(process.env.PORT || 3000);
+server.listen(process.env.PORT || 3000, function() {
+  console.log('Listening on port ' + server.address().port);
+});
 
 io.on('connection', twitterStream);
 
