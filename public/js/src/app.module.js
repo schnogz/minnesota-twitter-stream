@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('mnTweets', ['ngMap', 'ngRoute', 'ngMaterial'])
+    .module('mnTweets', ['ngMap', 'ngRoute', 'ngMaterial', 'ngAnimate'])
     .config(["$routeProvider", "$mdThemingProvider", function ($routeProvider, $mdThemingProvider) {
       // route configurations
       $routeProvider
