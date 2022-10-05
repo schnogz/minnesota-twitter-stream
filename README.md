@@ -6,7 +6,7 @@
 Overview
 ========
 Streams and plots on a map Minnesota area tweets in real time.  Built using Twitter API, Google Maps API, 
-Node, Angular, Express and Socket.io.  View the application [here](https://minnesota-twitter-stream.herokuapp.com/)
+Node, Angular, Express and Socket.io.
 
 Future Enhancements
 ========
